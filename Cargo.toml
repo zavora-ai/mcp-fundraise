@@ -1,0 +1,24 @@
+[package]
+name = "mcp-fundraise"
+version = "1.0.0"
+edition = "2021"
+description = "MCP server for startup fundraising — SAFE conversion, dilution modeling, valuation, runway, YC company search, SEC filings, investor pipeline"
+license = "Apache-2.0"
+repository = "https://github.com/zavora-ai/mcp-fundraise"
+keywords = ["mcp", "fundraising", "startup", "safe", "venture-capital"]
+categories = ["network-programming"]
+
+[[bin]]
+name = "mcp-fundraise"
+path = "src/main.rs"
+
+[dependencies]
+rmcp = { version = "1.7", features = ["server", "transport-io", "macros"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+
+[workspace]
