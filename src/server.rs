@@ -62,7 +62,7 @@ impl FundraiseServer {
     }
 }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl FundraiseServer {
     #[tool(description = "Calculate SAFE conversion at priced round. Shows shares issued, effective price, ownership percentage. Handles cap, discount, or both (uses better of the two).")]
     async fn safe_convert(&self, Parameters(input): Parameters<SafeInput>) -> String {
@@ -360,4 +360,11 @@ impl FundraiseServer {
         suggestions.sort_by(|a, b| { let ord = |u: &str| match u { "critical" => 0, "high" => 1, "medium" => 2, _ => 3 }; ord(a["urgency"].as_str().unwrap_or("")).cmp(&ord(b["urgency"].as_str().unwrap_or(""))) });
         json!({"suggestions": suggestions.len(), "items": suggestions}).to_string()
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: FundraiseServer,
+    task_tools: ["safe_convert", "currency_convert"],
+    approval_tools: [],
+    cache_ttl_ms: 60_000,
 }

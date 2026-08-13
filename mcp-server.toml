@@ -1,0 +1,123 @@
+server_id = "mcp_fundraise"
+display_name = "Fundraise"
+version = "1.0.0"
+domain = "fundraise"
+sdk_version = "0.2.0"
+risk_level = "medium"
+writes_allowed = "gated"
+transports = ["stdio"]
+credentials = []
+governance_gates = []
+environments = ["development", "staging", "production"]
+
+[[tools]]
+name = "safe_convert"
+description = "Calculate SAFE conversion at priced round. Shows shares issued, effective price, ownership percentage. Handles cap, discount, or both (uses better of the two)."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "dilution_model"
+description = "Model dilution from a priced round. Shows founder ownership before/after, option pool impact, SAFE conversions. Accounts for option pool shuffle."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "valuation_estimate"
+description = "Estimate startup valuation using revenue multiples by stage and sector. Uses current SaaS benchmarks (2024-2026 market data)."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "runway_calculate"
+description = "Calculate runway in months. Accounts for revenue offset and optional burn growth rate. Shows zero-cash date."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "financial_projection"
+description = "Project MRR/ARR growth over time. Shows month-by-month with optional churn impact."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "metric_benchmark"
+description = "Compare your startup metrics against stage benchmarks (SaaS). Metrics: cac, ltv, churn, nrr, burn_multiple, magic_number, payback_months, gross_margin."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "term_compare"
+description = "Compare multiple term sheets side-by-side. Calculates effective dilution, founder ownership, and flags concerning terms."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "red_flag_check"
+description = "Analyze startup metrics for investor red flags. Identifies issues that will come up in due diligence."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "data_room_checklist"
+description = "Generate data room checklist by fundraising stage. Lists all documents investors expect."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "yc_search"
+description = "Search Y Combinator companies by batch (s24, w24, s23, etc), industry, or keyword. Returns real data from 2000+ YC companies."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "sec_search"
+description = "Search SEC EDGAR for SAFE agreements, Form C (crowdfunding), and fundraising filings. Returns real public filing data."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "currency_convert"
+description = "Convert currency amounts for international fundraising. Supports 166 currencies. Real-time rates."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "deal_create"
+description = "Add investor to fundraising pipeline. Track outreach stage, intro type (cold, warm, inbound), contact info."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "deal_update"
+description = "Update deal stage (researched, contacted, meeting_scheduled, meeting_done, term_sheet, due_diligence, closed_won, closed_lost, passed)."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "pipeline_list"
+description = "List fundraising pipeline with funnel metrics. Shows deals by stage, conversion rates, and follow-up suggestions."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "follow_up_suggest"
+description = "Get follow-up suggestions based on deal stages and time elapsed. Tells you who to contact and when."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
