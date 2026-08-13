@@ -1,7 +1,8 @@
 [package]
 name = "mcp-fundraise"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2021"
+rust-version = "1.94.1"
 description = "MCP server for startup fundraising — SAFE conversion, dilution modeling, valuation, runway, YC company search, SEC filings, investor pipeline"
 license = "Apache-2.0"
 repository = "https://github.com/zavora-ai/mcp-fundraise"
@@ -14,6 +15,7 @@ path = "src/main.rs"
 
 [dependencies]
 rmcp = { version = "3.1.2", features = ["server", "transport-io", "macros"] }
+adk-mcp-sdk = { version = "0.2.0", git = "https://github.com/zavora-ai/adk-mcp-sdk.git", rev = "4dac4301441a8a51a042fd66cc1798f0ec3e3f55" }
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
